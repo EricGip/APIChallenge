@@ -77,19 +77,11 @@ logsRouter.post("/many", async (req: Request, res: Response) => {
     try {
         const newLog = req.body
         
-        // req.body is an array, when we do req.body.name, we're doing array.name
-        // we need to req.body.name[0]
-        const newLogs = [{
-            date: new Date(),
-            name: req.body.name,
-            type: req.body.type,
-            description: req.body.description
-        }];
+        // manually adding date into each entry
+        req.body.forEach((element: { date: Date; }) => {
+            element.date = new Date();
 
-        // console.log(req)
-        console.log(newLog)
-
-        
+        })
 
         console.log("Request processsed successfully")
 
@@ -102,7 +94,6 @@ logsRouter.post("/many", async (req: Request, res: Response) => {
 
         if (collections.logs) {
             //const result = await collections.logs.insertMany(staticLogTest);
-            //const result = await collections.logs.insertMany(newLogs);
             const result = await collections.logs.insertMany(newLog);
             console.log("Multiple logs uploaded into db!")
 

@@ -42,9 +42,9 @@ export async function connectToDatabase () {
                         description: "'description' is required and is a string"
                     }
                     }
-                }
-             },
-             validationLevel: "on"
+                },
+                validationLevel: "on"
+             }
         });
 
         // db.command({
