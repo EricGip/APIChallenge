@@ -15,43 +15,43 @@ export async function connectToDatabase () {
             
         const db: mongoDB.Db = client.db(process.env.DB_NAME);
 
-        // adding schema validation 
-        await db.command({
-            "collMod": process.env.LOGS_COLLECTION_NAME,
-            "validator": {
-                $jsonSchema: {
-                    bsonType: "object",
-                    required: ["date", "name", "type", "description"],
-                    additionalProperties: false,
-                    properties: {
-                    _id: {},
-                    date: {
-                        bsonType: "date",
-                        description: "'date' is required and is a date"
-                    },
-                    name: {
-                        bsonType: "string",
-                        description: "'name' is required and is a string"
-                    },
-                    type: {
-                        bsonType: "string",
-                        description: "'type' is required and is a string"
-                    },
-                    description: {
-                        bsonType: "string",
-                        description: "'description' is required and is a string"
-                    }
-                    }
-                },
-                validationLevel: "on"
-             }
-        });
-
-        // db.command({
+        // // adding schema validation 
+        // await db.command({
         //     "collMod": process.env.LOGS_COLLECTION_NAME,
-        //     validator: {},
-        //     validationLevel: "on"
-        // })
+        //     "validator": {
+        //         $jsonSchema: {
+        //             bsonType: "object",
+        //             required: ["date", "name", "type", "description"],
+        //             additionalProperties: false,
+        //             properties: {
+        //             _id: {},
+        //             date: {
+        //                 bsonType: "date",
+        //                 description: "'date' is required and is a date"
+        //             },
+        //             name: {
+        //                 bsonType: "string",
+        //                 description: "'name' is required and is a string"
+        //             },
+        //             type: {
+        //                 bsonType: "string",
+        //                 description: "'type' is required and is a string"
+        //             },
+        //             description: {
+        //                 bsonType: "string",
+        //                 description: "'description' is required and is a string"
+        //             }
+        //             }
+        //         },
+        //         validationLevel: "on"
+        //      }
+        // });
+
+        db.command({
+            "collMod": process.env.LOGS_COLLECTION_NAME,
+            validator: {},
+            validationLevel: "off"
+        })
 
         if ( process.env.LOGS_COLLECTION_NAME ){
             const logsCollection: mongoDB.Collection = db.collection(process.env.LOGS_COLLECTION_NAME);
