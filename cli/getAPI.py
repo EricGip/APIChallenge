@@ -34,16 +34,16 @@ def getAPI():
                     click.echo(item)
 
             ## if you do want to sort by descending
+            else: 
+                # next line breaks if date is not found, so filtering out date
+                data_with_date = [item for item in data if 'date' in item]
 
-            # next line breaks if date is not found, so filtering out date
-            data_with_date = [item for item in data if 'date' in item]
+                # sort the list of dictionaries by date
+                sorted_data = sorted(data_with_date, key=lambda x: x['date'], reverse=True)
 
-            # sort the list of dictionaries by date
-            sorted_data = sorted(data_with_date, key=lambda x: x['date'], reverse=True)
-
-            # Print the sorted data
-            for item in sorted_data:
-                click.echo(item)
+                # Print the sorted data
+                for item in sorted_data:
+                    click.echo(item)
 
         else:
             click.echo(f"Failed to fetch data. Status code: {response.status_code}")
