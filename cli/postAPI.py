@@ -9,8 +9,6 @@ multipleVulns = []
 @click.command()
 def postAPI():
 
-    click.echo("hello")
-
     name = click.prompt("Please enter name of vulnerability", type=str)
     type = click.prompt("Please enter type of vulnerability", type=str)
     description = click.prompt("Please enter a description of the vulnerability", type=str)
