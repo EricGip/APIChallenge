@@ -21,28 +21,26 @@ def getAPI():
             ## list comprehension to see how data looks like.
             # [click.echo(item) for item in data]
 
-            if click.confirm("Do you want to sort by descending date?", default="False", show_default=True):
-        
-            # next line breaks if date is not found, so filtering out date
-                data_with_date = [item for item in data if 'date' in item]
 
-                # sort the list of dictionaries by date
-                sorted_data = sorted(data_with_date, key=lambda x: x['date'])
+            # next line breaks if date is not found, so filtering out date
+            data_with_date = [item for item in data if 'date' in item]
+
+            # sort the list of dictionaries by date, this is ascending order
+            sorted_data_ascend = sorted(data_with_date, key=lambda x: x['date'])
+
+            ## this is descending order
+            sorted_data_descend = sorted(data_with_date, key=lambda x: x['date'], reverse=True)
+
+            if click.confirm("Do you want to sort by descending date?", default="True", show_default=True):
 
                 # Print the sorted data
-                for item in sorted_data:
+                for item in sorted_data_descend:
                     click.echo(item)
 
-            ## if you do want to sort by descending
+            ## if you want to sort by ascending
             else: 
-                # next line breaks if date is not found, so filtering out date
-                data_with_date = [item for item in data if 'date' in item]
-
-                # sort the list of dictionaries by date
-                sorted_data = sorted(data_with_date, key=lambda x: x['date'], reverse=True)
-
                 # Print the sorted data
-                for item in sorted_data:
+                for item in sorted_data_ascend:
                     click.echo(item)
 
         else:

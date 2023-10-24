@@ -1,16 +1,22 @@
 import click
 from getAPI import getAPI
 from postAPI import postAPI
+from connectDb import start
 
 import click
 
+
 @click.command()
-def main():
+def menu():
     """Interactive Menu using Click"""
 
     click.echo("Hello! Please choose an option from the menu.")
 
+    ## connect to db logic:
+    ## 1. make it a menu option, and then just show menu again? 
+
     menu_options = [
+        {"option": "0", "label": "Connect to database", "action": start},
         {"option": "1", "label": "Access the GET API", "action": getAPI},
         {"option": "2", "label": "Access the POST API", "action": postAPI},
         {"option": "q", "label": "Quit", "action": quit_menu},
@@ -21,7 +27,7 @@ def main():
         for option in menu_options:
             print(f"{option['option']}. {option['label']}")
 
-        choice = click.prompt("Enter your choice (q to quit):")
+        choice = click.prompt("Enter your choice (q to quit)")
 
         selected_option = next((opt for opt in menu_options if opt["option"] == choice), None)
 
@@ -30,10 +36,10 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-
 def quit_menu():
     print("Quitting the menu.")
     raise click.Abort()
 
+
 if __name__ == "__main__":
-    main()
+    menu()
