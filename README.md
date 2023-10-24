@@ -19,7 +19,9 @@ git clone https://github.com/EricGip/APIChallenge.git
 Cd into the root directory of the repo (where Package.json is located) and install dependencies:
 
 ```
-npm install && pip install -U click requests
+npm install
+
+pip install -U click requests
 ```
 
 **IMPORTANT**  
