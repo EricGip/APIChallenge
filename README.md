@@ -4,7 +4,7 @@ Backend created with TypeScript, Express, and MongoDB.
 
 CLI Application created with Python standard library, Requests, and Click.
 
-Pre-requisites: Might need Python and Node installed.
+Pre-requisites: Need Python and Node/NPM installed.
 
 ![Alt text](media/Example.png)
 
@@ -19,7 +19,7 @@ git clone https://github.com/EricGip/APIChallenge.git
 Cd into the root directory of the repo (where Package.json is located) and install dependencies:
 
 ```
-npm install
+npm install && pip install -U click requests
 ```
 
 **IMPORTANT**  
