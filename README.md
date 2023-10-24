@@ -36,15 +36,20 @@ python main.py
 
 Open another terminal instance in the same directory and run `python main.py` again to invoke the CALL / GET APIs. 
 
+Menu Choices:
+   1. Connect to database  
+   2. Access the GET API  
+   3. Access the POST API  
+   q. Quit  
+
 #### Bugs: 
-If you're using windows and you're getting an error of `FileNotFoundErorr: [WinError2]`, please try:
+If you're using windows and you're getting an error of `FileNotFoundErorr: [WinError2]`, please enter:
 
 ```
-cd cli
-
-python menu.py
+npm run start
 ```
-and it should function properly, just use `python menu.py` to invoke the APIs.
+
+then in another terminal instance, run `python main.py`, options 2 and 3 should function properly.
 
 ## Routes / Endpoints
 
