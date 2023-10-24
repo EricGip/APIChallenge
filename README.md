@@ -43,7 +43,7 @@ Menu Choices:
    q. Quit  
 
 #### Bugs: 
-If you're using windows and you're getting an error of `FileNotFoundErorr: [WinError2]`, please enter:
+If you're using windows and you're getting an error of `FileNotFoundErorr: [WinError2]`, in the same root directory, please enter:
 
 ```
 npm run start
