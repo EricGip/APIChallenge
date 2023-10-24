@@ -7,7 +7,7 @@ POST_MANY_URL = "http://localhost:8080/logs/many"
 multipleVulns = []
 
 @click.command()
-def main():
+def postAPI():
 
     click.echo("hello")
 
@@ -27,7 +27,9 @@ def main():
         ## then ask the prompt again? 
         click.echo(multipleVulns)
         click.echo(len(multipleVulns))
-        main()
+        postAPI()
+
+    ## if user does not want to enter more, it should still append 
     multipleVulns.append(data)
 
     if len(multipleVulns) >= 2:
@@ -44,9 +46,9 @@ def main():
             click.echo(f"Error: {e}")
 
         click.echo(r.status_code)
-
         click.echo(multipleVulns)
 
+    ## else, if its a single object to post 
     else:
         try: 
             r = requests.post(POST_URL, json=data)
@@ -65,4 +67,4 @@ def main():
         click.echo(data)
 
 if __name__ == '__main__':
-    main()
+    postAPI()
