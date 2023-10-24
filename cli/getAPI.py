@@ -23,13 +23,14 @@ def getAPI():
 
 
             # next line breaks if date is not found, so filtering out date
-            data_with_date = [item for item in data if 'date' in item]
+            ## can be fixed with data validation
+            data_with_date = [item for item in data if "date" in item]
 
             # sort the list of dictionaries by date, this is ascending order
-            sorted_data_ascend = sorted(data_with_date, key=lambda x: x['date'])
+            sorted_data_ascend = sorted(data_with_date, key=lambda x: x["date"])
 
             ## this is descending order
-            sorted_data_descend = sorted(data_with_date, key=lambda x: x['date'], reverse=True)
+            sorted_data_descend = sorted(data_with_date, key=lambda x: x["date"], reverse=True)
 
             if click.confirm("Do you want to sort by descending date?", default="True", show_default=True):
 

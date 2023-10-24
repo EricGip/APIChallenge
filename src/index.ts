@@ -14,6 +14,7 @@ connectToDatabase()
 
         app.listen(port, () => {
             console.log(`Server started at http://localhost:${port}`);
+            console.log("Please open another terminal instance to use the CLI tool to call APIs.");
         });
     })
     .catch((error: Error) => {
