@@ -8,7 +8,7 @@ Pre-requisites: Might need Python and Node installed.
 
 ![Alt text](media/Example.png)
 
-## Installation
+## Installation and Usage
 
 Clone the repo
 
