@@ -28,8 +28,9 @@ def main():
         click.echo(multipleVulns)
         click.echo(len(multipleVulns))
         main()
+    multipleVulns.append(data)
 
-    if len(multipleVulns) >= 1:
+    if len(multipleVulns) >= 2:
         try: 
             r = requests.post(POST_MANY_URL, json=multipleVulns)
 
