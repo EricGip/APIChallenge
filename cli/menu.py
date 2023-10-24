@@ -12,13 +12,10 @@ def menu():
 
     click.echo("Hello! Please choose an option from the menu.")
 
-    ## connect to db logic:
-    ## 1. make it a menu option, and then just show menu again? 
-
     menu_options = [
-        {"option": "0", "label": "Connect to database", "action": start},
-        {"option": "1", "label": "Access the GET API", "action": getAPI},
-        {"option": "2", "label": "Access the POST API", "action": postAPI},
+        {"option": "1", "label": "Connect to database", "action": start},
+        {"option": "2", "label": "Access the GET API", "action": getAPI},
+        {"option": "3", "label": "Access the POST API", "action": postAPI},
         {"option": "q", "label": "Quit", "action": quit_menu},
     ]
 
