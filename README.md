@@ -13,7 +13,7 @@ Pre-requisites: Might need Python and Node installed.
 Clone the repo
 
 ```
-git clone git@github.com/EricGip/APIChallenge.git
+git clone https://github.com/EricGip/APIChallenge.git
 ```
 
 Cd into the root directory of the repo (where Package.json is located) and install dependencies:
