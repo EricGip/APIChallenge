@@ -51,6 +51,11 @@ logsRouter.post("/", async (req: Request, res: Response) => {
     try {
         const newLog = req.body as Log;
 
+        // manually adding date into each entry
+        req.body.forEach((element: { date: Date; }) => {
+            element.date = new Date();
+        })
+
         console.log(newLog)
 
         console.log("Request successfully processed")

@@ -15,12 +15,13 @@ def getAPI():
 
         if response.status_code == 200:
             data = response.json()
-            # Process the data as needed
             
             ##for i in range(len(data)):
             ##    click.echo(data[i])
+
             [click.echo(item) for item in data]
-            #click.echo([x for x in data])
+
+            ## prints a whole unreadable block
             ##click.echo(f"Data from API: {data}")
         else:
             click.echo(f"Failed to fetch data. Status code: {response.status_code}")
