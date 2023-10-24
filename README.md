@@ -34,7 +34,7 @@ In the same root directory, run the CLI application and start the connection to 
 python main.py 
 ```
 
-Open another terminal instance in the same directory and run `python main.py` again to invoke the CALL / GET APIs. 
+Open another terminal instance in the same directory and run `python main.py` again to invoke the CALL / GET APIs through menu choices. 
 
 Menu Choices:
    1. Connect to database  
