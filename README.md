@@ -110,7 +110,14 @@ Since we are posting data, we need a persistent store and credentials for the da
 		3. if multiple: just ask 4 questions: name, type, descrption, and add another? (Y/n)  
 			1. if y, repeat questions, append object to array  
 				1. need to make sure it appends with { } in front to tell db it's an object  
-			2. if n, send post request with the array as the body.  
+			2. if n, send post request with the array as the body.
+
+
+### What I would add 
+1. Data validation
+2. Api key
+4. Docker so user doesn’t have to npm install and pip
+
 
 Resources:
 
