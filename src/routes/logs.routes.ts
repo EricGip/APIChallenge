@@ -49,8 +49,8 @@ logsRouter.get("/:id", async (req: Request, res: Response) => {
 // post one
 logsRouter.post("/", async (req: Request, res: Response) => {
     try {
-        const newLog = req.body as Log;
-
+        //const newLog = req.body as Log;
+        const newLog = req.body
         // manually adding date into each entry
         req.body.forEach((element: { date: Date; }) => {
             element.date = new Date();
@@ -61,11 +61,14 @@ logsRouter.post("/", async (req: Request, res: Response) => {
         console.log("Request successfully processed")
         
         if (collections.logs) {
-            const result = await collections.logs.insertOne(newLog);
+            //const result = await collections.logs.insertOne(newLog);
+            const result = await collections.logs.insertMany(newLog);
+
             console.log("Log inserted.")
 
             result
-                ? res.status(201).send(`Successfully created a new log with id ${result.insertedId}`)
+                //? res.status(201).send(`Successfully created a new log with id ${result.insertedId}`)
+                ? res.status(201).send(`Successfully created a new log with id ${result.insertedIds}`)
                 : res.status(500).send("Failed to create a new log.");
         }
 

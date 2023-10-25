@@ -2,7 +2,7 @@ import click
 import requests
 
 POST_URL = "http://localhost:8080/logs/"
-POST_MANY_URL = "http://localhost:8080/logs/many"
+##POST_MANY_URL = "http://localhost:8080/logs/many"
 
 multipleVulns = []
 
@@ -20,11 +20,9 @@ def postAPI():
     }
     
     if click.confirm("Do you want to add more vulnerabilities?", default="False", show_default=True):
-        multipleVulns.append(data)
         ## if we want to add more vulns, we push the dict into an array,
         ## then ask the prompt again? 
-        click.echo(multipleVulns)
-        click.echo(len(multipleVulns))
+        multipleVulns.append(data)
         postAPI()
 
     ## if user does not want to enter more, it should still append 
@@ -32,7 +30,8 @@ def postAPI():
 
     if len(multipleVulns) >= 2:
         try: 
-            r = requests.post(POST_MANY_URL, json=multipleVulns)
+            ##r = requests.post(POST_MANY_URL, json=multipleVulns)
+            r = requests.post(POST_URL, json=multipleVulns)
 
             if r.status_code == 200 or 201:
                 click.echo("successfully posted multiple logs!")
@@ -44,12 +43,13 @@ def postAPI():
             click.echo(f"Error: {e}")
 
         click.echo(r.status_code)
-        click.echo(multipleVulns)
+        #click.echo(multipleVulns)
 
     ## else, if its a single object to post 
     else:
         try: 
-            r = requests.post(POST_URL, json=data)
+            #r = requests.post(POST_URL, json=data)
+            r = requests.post(POST_URL, json=multipleVulns)
 
             if r.status_code == 200 or 201:
                 click.echo("successfully posted!")
@@ -62,7 +62,7 @@ def postAPI():
 
         click.echo(r.status_code)
 
-        click.echo(data)
+        #click.echo(data)
 
 if __name__ == '__main__':
     postAPI()
