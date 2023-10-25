@@ -6,7 +6,7 @@ CLI Application created with Python standard library, Requests, and Click.
 
 Pre-requisites: Might need Python and Node installed.
 
-[Alt text](media/Example.png)
+![Alt text](media/Example.png)
 
 ## Installation
 
