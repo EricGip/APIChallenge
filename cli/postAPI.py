@@ -2,7 +2,8 @@ import click
 import requests
 
 POST_URL = "http://localhost:8080/logs/"
-##POST_MANY_URL = "http://localhost:8080/logs/many"
+## We only want one single route to handle both, fixed. 
+
 
 multipleVulns = []
 
@@ -30,7 +31,7 @@ def postAPI():
 
     if len(multipleVulns) >= 2:
         try: 
-            ##r = requests.post(POST_MANY_URL, json=multipleVulns)
+
             r = requests.post(POST_URL, json=multipleVulns)
 
             if r.status_code == 200 or 201:
@@ -48,7 +49,6 @@ def postAPI():
     ## else, if its a single object to post 
     else:
         try: 
-            #r = requests.post(POST_URL, json=data)
             r = requests.post(POST_URL, json=multipleVulns)
 
             if r.status_code == 200 or 201:

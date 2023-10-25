@@ -68,44 +68,6 @@ logsRouter.post("/", async (req: Request, res: Response) => {
 
             result
                 //? res.status(201).send(`Successfully created a new log with id ${result.insertedId}`)
-                ? res.status(201).send(`Successfully created a new log with id ${result.insertedIds}`)
-                : res.status(500).send("Failed to create a new log.");
-        }
-
-    } catch (error) {
-        console.error(error);
-        res.status(400).send(error);
-    }
-});
-
-
-// post many
-
-logsRouter.post("/many", async (req: Request, res: Response) => {
-    try {
-        const newLog = req.body
-        
-        // manually adding date into each entry
-        req.body.forEach((element: { date: Date; }) => {
-            element.date = new Date();
-
-        })
-
-        console.log("Request processsed successfully")
-
-        // static log is uploading properly, that means our body isnt being parsed properly
-        const staticLogTest = [
-            { name: "test1", type: "test1", description: "description test 1" },
-            { name: "test2", type: "test2", description: "description test 2" },
-            { name: "test3", type: "test3", description: "description test 3" },
-        ]
-
-        if (collections.logs) {
-            //const result = await collections.logs.insertMany(staticLogTest);
-            const result = await collections.logs.insertMany(newLog);
-            console.log("Multiple logs uploaded into db!")
-
-            result
                 ? res.status(201).send(`Successfully created ${result.insertedCount} new logs!`)
                 : res.status(500).send("Failed to create a new log.");
         }
@@ -113,10 +75,5 @@ logsRouter.post("/many", async (req: Request, res: Response) => {
     } catch (error) {
         console.error(error);
         res.status(400).send(error);
-        console.log("failed to upload multiple logs")
     }
 });
-
-// PUT
-
-// DELETE
