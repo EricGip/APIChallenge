@@ -79,6 +79,21 @@ Expects array of objects/dictionaries.
   
 ### Decisions
 
+#### Questions
+
+1. Chose to create a REST API because it is the most common and I should focus on the fundamentals before I try deviating.  
+   - I am aware of SOAP, GraphQL, gRPC, Websockets, and Webhooks.  
+2. Chose to do this in Python with Requests, could have chosen language agnostic tool such as cURL and wrote CLI app in another language.  
+   - JS/NPM and Axios/Fetch, Bash + cURL.
+3. Can think of 3 places we could have sorted the data:
+   1. In the backend during MongoDB API call, there is most likely an ORM function or argument for this. 
+      - This limits us if we are extending the application, it is better to manipulate the data after this step.
+   2. In the backend after MongoDB API call with TypeScript.
+   3. In the CLI app after MongoDB API call with Python.  
+      - Chose this because I am most comfortable with data structures & algorithms in Python.  
+      - Unless there is something more efficient happening under the hood of either language, they should be around the same complexity of O(n log n).  
+
+
 Since we are posting data, we need a persistent store and credentials for the database. I can think of doing this 5 ways. 
 
 1. Sending db information in an email that's hopefully encrypted.  
@@ -93,7 +108,7 @@ Since we are posting data, we need a persistent store and credentials for the da
    - Requires more overhead than the project itself.
 
 
-### Decompositioning / what my task is broken down: 
+#### Decompositioning / what my task is broken down: 
 
 0. First thing we need is to connect to the database, have a script that does `npm run start` to initialize connection to server.
 1. prompt user "what do you want to do?" get or post request
@@ -106,6 +121,9 @@ Since we are posting data, we need a persistent store and credentials for the da
 			1. if y, repeat questions, append object to array  
 				1. need to make sure it appends with { } in front to tell db it's an object  
 			2. if n, send post request with the array as the body.
+
+
+
 
 
 ### What I would add 
