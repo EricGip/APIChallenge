@@ -86,7 +86,7 @@ Since we are posting data, we need a persistent store and credentials for the da
 2. Hard coding credentials in .env and leaving it in repository. 
    - This is irresponsible to do while interviewing for a security role
 3. Set up database with local MongoDb instance.
-   - User may be need to download would require more overhead from the user.
+   - User may be on limited connection and need to download MongoDB, would require more overhead from the user.
 4. Dockerize entire app, instantiate MongoDb within the container. 
    - User might need to have Docker Desktop installed (> 1gb) and may be on a slower / limited connection. Also, docker desktop takes a ton of RAM even just processing in the background.  
 5. Dockerize app, host on serverless backend cloud app (AWS lambda or GCP cloud run should be enough), then call API with the CLI tool.
