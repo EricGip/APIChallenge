@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import { ObjectId } from "mongodb";
 import { collections } from "../services/database.service";
 import Log from "../models/logs"
+import { ResetValue } from "firebase-functions/lib/common/options";
 
 
 // Global Config
@@ -46,11 +47,12 @@ logsRouter.get("/:id", async (req: Request, res: Response) => {
 });
 // POST
 
-// post one
 logsRouter.post("/", async (req: Request, res: Response) => {
     try {
+        
         //const newLog = req.body as Log;
         const newLog = req.body
+        
         // manually adding date into each entry
         req.body.forEach((element: { date: Date; }) => {
             element.date = new Date();
@@ -77,3 +79,26 @@ logsRouter.post("/", async (req: Request, res: Response) => {
         res.status(400).send(error);
     }
 });
+
+// PUT
+
+// DELETE 
+logsRouter.delete("/:id", async (req: Request, res: Response) => {
+    const id = req?.params?.id;
+
+    try {
+        const query = { _id: new ObjectId(id) }; 
+        const result = await collections.logs?.deleteOne(query)
+
+        if (result  && result.deletedCount) {
+            res.status(202).send(`Successfully removed log with id ${id}`);
+        } else if (!result) {
+            res.status(400).send(`Failed to remove log with id ${id}`);
+        } else if (!result.deletedCount) {
+            res.status(404).send(`Log with id ${id} does not exist`);
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(400).send(error)
+    }
+})
