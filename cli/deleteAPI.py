@@ -4,6 +4,8 @@ import requests
 API_URL = "http://localhost:8080/logs/"
 
 """
+Extra work done after 10/24
+
 Ask user what the id is, 
 ask confirmation,
     else, abort 

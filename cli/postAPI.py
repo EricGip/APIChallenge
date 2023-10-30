@@ -29,6 +29,29 @@ def postAPI():
     ## if user does not want to enter more, it should still append 
     multipleVulns.append(data)
 
+    ## post to same route whether its a single log or not. 
+    try:
+        r = requests.post(POST_URL, json=multipleVulns)
+
+        ## can add logic here of, if len(multipleVulns) >= 2, posted logs, else: posted log
+        if r.status_code == 200 or 201:
+            click.echo("successfully posted logs!")
+
+        else:
+            click.echo(f"Failed to post data. Status code: {r.status_code}")
+
+    except requests.RequestException as e:
+        click.echo(f"Error: {e}")
+
+    click.echo(r.status_code)
+    #click.echo(multipleVulns)
+
+
+
+    """
+    Done by 10/25:
+    old logic when we had separated POST requests for multiple 
+
     if len(multipleVulns) >= 2:
         try: 
 
@@ -63,6 +86,9 @@ def postAPI():
         click.echo(r.status_code)
 
         #click.echo(data)
+    
+    """
+
 
 if __name__ == '__main__':
     postAPI()
