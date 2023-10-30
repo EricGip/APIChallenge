@@ -86,7 +86,7 @@ Expects array of objects/dictionaries.
 2. Chose to do this in Python with Requests, could have chosen language agnostic tool such as cURL and wrote CLI app in another language.  
    - JS/NPM and Axios/Fetch, Bash + cURL.
 3. Can think of 3 places we could have sorted the data:
-   1. In the backend during MongoDB API call, there is most likely an ORM function or argument for this. 
+   1. In the backend during MongoDB API call, there is most likely an ORM function for this. 
       - This limits us if we are extending the application, it is better to manipulate the data after this step.
    2. In the backend after MongoDB API call with TypeScript.
    3. In the CLI app after MongoDB API call with Python.  
@@ -110,7 +110,7 @@ Since we are posting data, we need a persistent store and credentials for the da
 
 #### Decompositioning / what my task is broken down: 
 
-0. First thing we need is to connect to the database, have a script that does `npm run start` to initialize connection to server.
+0. First thing we need to do is to connect to the database, have a script that does `npm run start` to initialize connection to server.
 1. prompt user "what do you want to do?" get or post request
 	1. if get, "sort objects descending by date and display results". Need way to present data nicer than just objects too.
 		1. probably for loop, set into array / some kind of nicer text
