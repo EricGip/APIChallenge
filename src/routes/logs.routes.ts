@@ -3,7 +3,7 @@ import express, { Request, Response } from "express";
 import { ObjectId } from "mongodb";
 import { collections } from "../services/database.service";
 import Log from "../models/logs"
-import { ResetValue } from "firebase-functions/lib/common/options";
+
 
 
 // Global Config
@@ -81,6 +81,25 @@ logsRouter.post("/", async (req: Request, res: Response) => {
 });
 
 // PUT
+logsRouter.put("/:id", async (req: Request, res: Response) => {
+    const id = req?.params?.id;
+
+    try {
+        const updatedLog: Log = req.body as Log;
+        const query = { _id: new ObjectId(id) };
+
+        const result = await collections.logs?.updateOne(query, { $set: updatedLog });
+
+
+        result
+            ? res.status(200).send(`Successfully updated log with id ${id}`) && console.log("Successfully updated log")
+            : res.status(304).send(`Game with id: ${id} not updated`) && console.log("Failed to update log");
+    } catch (error) {
+        console.error(error);
+        res.status(400).send(error)
+    }
+
+})
 
 // DELETE 
 logsRouter.delete("/:id", async (req: Request, res: Response) => {

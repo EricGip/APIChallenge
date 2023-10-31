@@ -3,6 +3,7 @@ from getAPI import getAPI
 from postAPI import postAPI
 from connectDb import start
 from deleteAPI import deleteAPI
+from putAPI import putAPI
 
 
 import click
@@ -18,7 +19,8 @@ def menu():
         {"option": "1", "label": "Connect to database", "action": start},
         {"option": "2", "label": "Access the GET API", "action": getAPI},
         {"option": "3", "label": "Access the POST API", "action": postAPI},
-        {"option": "4", "label": "Access the DELETE API", "action": deleteAPI},
+        {"option": "4", "label": "Access the PUT API", "action": putAPI},
+        {"option": "5", "label": "Access the DELETE API", "action": deleteAPI},
         {"option": "q", "label": "Quit", "action": quit_menu},
     ]
 
