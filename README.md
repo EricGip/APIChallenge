@@ -127,7 +127,7 @@ Since we are posting data, we need a persistent store and credentials for the da
 
 
 ### What I would add 
-1. DELETE and PUT routes to edit and delete data.
+~~1. DELETE and PUT routes to edit and delete data.~~ Extended App to ensure I remember how the app works
 2. Data validation
 3. Api key
 4. Docker so user doesn’t have to npm install and pip
